@@ -29,7 +29,7 @@ when 'debian'
   grafana_installed = "dpkg -l | grep '^ii' | grep grafana | grep #{node['grafana']['version']}"
 
   remote_file "#{Chef::Config[:file_cache_path]}/grafana-#{node['grafana']['version']}.deb" do
-    source "#{node['grafana']['file']['url']}_#{node['grafana']['version']}_amd64.deb"
+    source "#{node['grafana']['file']['url']}/grafana-#{node['grafana']['version']}_amd64.deb"
     checksum node['grafana']['file']['checksum']['deb']
     action :create
     not_if grafana_installed
